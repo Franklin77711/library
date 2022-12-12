@@ -1,8 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
     padding: 0;
     margin: 0;
 }
@@ -23,19 +22,39 @@ body{
 
 #content{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 10em;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 13em);
+    /*grid-template-columns: repeat(fit-content, minmax(0, 1em));*/
+    grid-column-gap: 5em;
     grid-row-gap: 1em;
-    margin: 2em 10em 0 10em;
+   
 }
 
 .card{
     background-color: lightgray;
-    padding: 10px;
+    padding: 1em;
+    margin: 0.5em 0.5em;
     text-align: left;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 1em;
+
+    width: 10em;
+}
+
+.answer{
+  text-align: center;
+  margin: 1em;
+}
+#error{
+  color: red;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    --moz-appearance:textfield; /* Firefox */
 }
 
 #form{
@@ -139,3 +158,23 @@ body{
       .slider.round:before {
         border-radius: 50%;
       }
+/*
+
+@media (max-width: 1000px){
+  #content{
+    grid-template-columns: repeat(3, minmax(0, 1em));
+}
+
+}
+@media (max-width: 700px){
+  #content{
+    grid-template-columns: repeat(2, minmax(0, 1em));
+}
+
+}
+@media (max-width: 500px){
+  #content{
+    grid-template-columns: repeat(1, minmax(0, 1em));
+}
+
+}*/
