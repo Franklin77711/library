@@ -36,7 +36,7 @@ body{
     margin: 0.5em 0.5em;
     text-align: left;
     display: grid;
-
+    position: relative;
     width: 10em;
 }
 
@@ -55,6 +55,26 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     --moz-appearance:textfield; /* Firefox */
+}
+
+.settings{
+  position: absolute;
+  top: 0.5em;
+  background: transparent;
+  border: none;
+  right: 1em;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.save-change{
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  background: transparent;
+  border: none;
+  font-style: normal;
+  display: none;
 }
 
 #form{
