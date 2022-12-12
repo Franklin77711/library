@@ -18,7 +18,12 @@ body{
     height: 3em;
     text-align: center;
 }
-
+[contenteditable="true"]{
+  border: 2px solid green;
+  border-radius: 15px;
+  padding: 0.2em;
+  margin: 0;
+}
 
 #content{
     display: grid;
@@ -44,8 +49,9 @@ body{
   text-align: center;
   margin: 1em;
 }
-#error{
+#error, .change-error{
   color: red;
+  display: none;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

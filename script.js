@@ -53,6 +53,10 @@ function addToLibrary(){
         tdifficulty.textContent = games[games.length-1].difficulty;
         tdifficulty.setAttribute("class", "difficulty answer");
         card.appendChild(tdifficulty);
+
+        const errorChng = document.createElement("p");
+        errorChng.setAttribute("class", "change-error");
+        card.appendChild(errorChng);
         //switch add
         const lplatinum = document.createElement("label");
         lplatinum.textContent = "Platinum earned? ";
@@ -77,17 +81,41 @@ function addToLibrary(){
         saveBtn.setAttribute("class", "save-change");
         card.appendChild(saveBtn);
 
+        let helpName = ""
+
         settings.addEventListener("click", () =>{
             saveBtn.style.display = "block";
-            modifyCard();
-
+            tplaytime.setAttribute("contentEditable", true);
+            tname.setAttribute("contentEditable", true);
+            tdifficulty.setAttribute("contentEditable", true);
+            helpName = tname.textContent;
         })
 
         saveBtn.addEventListener("click", () =>{
+            let falsecheck = false;
+            for(let nextgame of games){
+                if(nextgame.name == tname.textContent){
+                    errorChng.style.display="block";
+                    errorChng.textContent = "This game has already been added!";
+                    falsecheck=true;
+                }   
+            }
+            if (tdifficulty.textContent > 10 || tdifficulty.textContent < 0){
+                errorChng.textContent = "Difficulty must be between 10 and 0!";
+                falsecheck=true;
+            }else if(tname.textContent == ""){
+                errorChng.style.display="block";
+                errorChng.textContent = "The name of the game can not be empty!";
+                falsecheck=true;
+            }else{
             saveBtn.style.display = "none";
-            saveChange();
+            errorChng.textContent="";
+            errorChng.style.display="none";
+            tplaytime.removeAttribute("contentEditable");
+            tname.removeAttribute("contentEditable");
+            tdifficulty.removeAttribute("contentEditable");
+                }
         })
-
        
     };
     function popclose(){
@@ -110,9 +138,11 @@ function magicHappens(){
         }
           //error handle for difficulty must be 0-10
         if (difficulty.value > 10 || difficulty.value < 0){
+            errorDiv.style.display="block";
             errorDiv.textContent = "Difficulty must be between 10 and 0!";
             falsecheck=true;
         }else if(gname.value == ""){
+            errorDiv.style.display="block";
             errorDiv.textContent = "The name of the game can not be empty!";
             falsecheck=true;
         }
@@ -121,15 +151,8 @@ function magicHappens(){
                 createCard();
                 popclose();
                 falsecheck = true;
-                console.log(games)
             }
     }
-
-function modifyCard(){
-}
-
-function saveChange(){
-}
 
 //buttonclick events
 popBtn.addEventListener("click", function popadd(){
