@@ -81,7 +81,7 @@ function addToLibrary(){
         saveBtn.setAttribute("class", "save-change");
         card.appendChild(saveBtn);
 
-        let helpName = ""
+        let helpName = "";
 
         settings.addEventListener("click", () =>{
             saveBtn.style.display = "block";
@@ -89,15 +89,19 @@ function addToLibrary(){
             tname.setAttribute("contentEditable", true);
             tdifficulty.setAttribute("contentEditable", true);
             helpName = tname.textContent;
-        })
 
+        })
+        
         saveBtn.addEventListener("click", () =>{
             let falsecheck = false;
             for(let nextgame of games){
-                if(nextgame.name == tname.textContent){
+                if(tname.textContent == helpName){
+                    falsecheck = false
+                }
+                else if(tname.textContent == nextgame.name){
                     errorChng.style.display="block";
                     errorChng.textContent = "This game has already been added!";
-                    falsecheck=true;
+                    falsecheck = true;
                 }   
             }
             if (tdifficulty.textContent > 10 || tdifficulty.textContent < 0){
@@ -107,13 +111,14 @@ function addToLibrary(){
                 errorChng.style.display="block";
                 errorChng.textContent = "The name of the game can not be empty!";
                 falsecheck=true;
-            }else{
-            saveBtn.style.display = "none";
-            errorChng.textContent="";
-            errorChng.style.display="none";
-            tplaytime.removeAttribute("contentEditable");
-            tname.removeAttribute("contentEditable");
-            tdifficulty.removeAttribute("contentEditable");
+            }else if (falsecheck == false){
+                 
+                saveBtn.style.display = "none";
+                errorChng.textContent="";
+                errorChng.style.display="none";
+                tplaytime.removeAttribute("contentEditable");
+                tname.removeAttribute("contentEditable");
+                tdifficulty.removeAttribute("contentEditable");
                 }
         })
        
@@ -132,6 +137,7 @@ function magicHappens(){
     //error handle for same game add
         for(let nextgame of games){
             if(nextgame.name == gname.value){
+                errorDiv.style.display="block";
                 errorDiv.textContent = "This game has already been added!";
                 falsecheck=true;
             }   

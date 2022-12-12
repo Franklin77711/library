@@ -18,6 +18,18 @@ body{
     height: 3em;
     text-align: center;
 }
+#pop-btn{
+margin-top: 7px;
+background: transparent;
+border: 2px solid black;
+padding: 0.5em;
+border-radius: 15px;
+}
+#pop-btn:hover{
+  cursor: pointer;
+  background-color: rgb(120, 197, 223);
+}
+
 [contenteditable="true"]{
   border: 2px solid green;
   border-radius: 15px;
@@ -184,23 +196,3 @@ input[type=number] {
       .slider.round:before {
         border-radius: 50%;
       }
-/*
-
-@media (max-width: 1000px){
-  #content{
-    grid-template-columns: repeat(3, minmax(0, 1em));
-}
-
-}
-@media (max-width: 700px){
-  #content{
-    grid-template-columns: repeat(2, minmax(0, 1em));
-}
-
-}
-@media (max-width: 500px){
-  #content{
-    grid-template-columns: repeat(1, minmax(0, 1em));
-}
-
-}*/
