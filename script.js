@@ -105,20 +105,30 @@ function addToLibrary(){
                 }   
             }
             if (tdifficulty.textContent > 10 || tdifficulty.textContent < 0){
+                errorChng.style.display="block";
                 errorChng.textContent = "Difficulty must be between 10 and 0!";
                 falsecheck=true;
             }else if(tname.textContent == ""){
                 errorChng.style.display="block";
                 errorChng.textContent = "The name of the game can not be empty!";
                 falsecheck=true;
+            }else if(tplaytime.textContent < 0){
+                errorChng.style.display="block";
+                errorChng.textContent = "You can't play negative hours!";
+                    falsecheck=true;
             }else if (falsecheck == false){
-                 
+                let editableGame = games.findIndex((obj => obj.name == helpName))
+                games[editableGame].name = tname.textContent;
+                games[editableGame].playtime = tplaytime.textContent;
+                games[editableGame].difficulty = tdifficulty.textContent;
+
                 saveBtn.style.display = "none";
                 errorChng.textContent="";
-                errorChng.style.display="none";
+                errorChng.style.display ="none";
                 tplaytime.removeAttribute("contentEditable");
                 tname.removeAttribute("contentEditable");
                 tdifficulty.removeAttribute("contentEditable");
+                
                 }
         })
        
@@ -167,4 +177,23 @@ popBtn.addEventListener("click", function popadd(){
 addBtn.addEventListener("click", magicHappens);
 cancelBtn.addEventListener("click", popclose);
 //save to localhost
-//document.addEventListener("load", localStorage.getItem("myGames"));
+// Save a book to local storage
+/*function saveBook(book) {
+    // Convert the book object to a JSON string
+    const bookData = JSON.stringify(book);
+  
+    // Use the setItem() method to save the book data to local storage
+    localStorage.setItem('book', bookData);
+  }
+  
+  // Retrieve a book from local storage
+  function getBook() {
+    // Use the getItem() method to retrieve the book data from local storage
+    const bookData = localStorage.getItem('book');
+  
+    // Parse the book data to convert it back into a JavaScript object
+    const book = JSON.parse(bookData);
+  
+    // Return the book object
+    return book;
+  }*/
