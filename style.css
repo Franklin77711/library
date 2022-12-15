@@ -204,7 +204,10 @@ input[type=number] {
   flex-direction: row;
   gap: 1em;
 }
-
+#addDifficulty:invalid{
+color: #e60000;
+font-family: 'Unbounded', cursive;
+}
 
 
 
