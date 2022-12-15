@@ -13,18 +13,24 @@
     </div>
     <div class="sec-header">
         <button id="pop-btn" type="button">Add game</button>
-        <div id="form">
-            <div method="get">
-                <label for="name">Game name:</label>
-                <input type="text" name="name" id="addName" required>
-                <label for="playtime">Hours played:</label>
-                <input type="number" name="playtime" id="addPlaytime">
-                <label for="difficulty">Difficulty 10/?:</label>
-                <input type="number" max="10" name="difficulty" id="addDifficulty">
-                <button id="add-btn">Add</button>
-                <button id="cancel-btn">Cancel</button>
+        <div class="form">
+                <div>
+                    <label for="name">Game name: </label>
+                    <input type="text" name="name" id="addName" required>
+                </div>
+                <div>
+                    <label for="playtime">Hours played: </label>
+                    <input type="number" name="playtime" id="addPlaytime">
+                </div>
+                <div>
+                    <label for="difficulty">Difficulty 10/?:</label>
+                    <input type="number" max="10" name="difficulty" id="addDifficulty">
+                </div>
+                <div class="buttons">
+                    <button id="add-btn">Add</button>
+                    <button id="cancel-btn">Cancel</button>
+                </div>
                 <div id="error"></div>
-            </div>
         </div>
     </div>
     <div id="content">

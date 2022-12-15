@@ -6,7 +6,7 @@ const difficulty = document.getElementById("addDifficulty");
 const popBtn = document.getElementById("pop-btn");
 const addBtn = document.getElementById("add-btn");
 const cancelBtn = document.getElementById("cancel-btn");
-const popform = document.getElementById("form");
+const popform = document.querySelector(".form");
 const errorDiv = document.getElementById("error");
 
 window.addEventListener("load", renderSavedGames)
