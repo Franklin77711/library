@@ -84,16 +84,23 @@ function addToLibrary(){
         saveBtn.setAttribute("class", "save-change");
         card.appendChild(saveBtn);
 
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "delete";
+        delBtn.setAttribute("class", "delete");
+        card.appendChild(delBtn);
+
         let helpName = "";
 
         settings.addEventListener("click", () =>{
             saveBtn.style.display = "block";
+            delBtn.style.display = "block";
             tplaytime.setAttribute("contentEditable", true);
             tname.setAttribute("contentEditable", true);
             tdifficulty.setAttribute("contentEditable", true);
             helpName = tname.textContent;
 
         })
+
         
         saveBtn.addEventListener("click", () =>{
             let falsecheck = false;
@@ -126,6 +133,7 @@ function addToLibrary(){
                 games[editableGame].difficulty = tdifficulty.textContent;
 
                 saveBtn.style.display = "none";
+                delBtn.style.display = "none";
                 errorChng.textContent="";
                 errorChng.style.display ="none";
                 tplaytime.removeAttribute("contentEditable");
@@ -133,6 +141,20 @@ function addToLibrary(){
                 tdifficulty.removeAttribute("contentEditable");
                 
                 }
+        })
+        
+        delBtn.addEventListener("click", ()=>{
+            for(let game of games){
+                if(tname.textContent == game.name){
+                    let removeableGame = games.findIndex((obj => obj.name == helpName))
+                    if (removeableGame > -1) {
+                        games.splice(removeableGame, 1);
+                        removeGame(games, removeableGame);
+                      }
+                    card.remove();
+                    console.log(games)
+                }
+            }
         })
        
     };
@@ -193,6 +215,11 @@ function getGame() {
     const game = JSON.parse(gameData);
     
     return game;
+  }
+function removeGame(game, index) {
+    let storage = getGame()
+    storage.splice(index, 1)
+    window.localStorage.setItem('games', JSON.stringify(game));
   }
 
 function renderSavedGames(){
@@ -259,10 +286,17 @@ function renderSavedGames(){
         saveBtn.setAttribute("class", "save-change");
         card.appendChild(saveBtn);
 
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "delete";
+        delBtn.setAttribute("class", "delete");
+        card.appendChild(delBtn);
+
+
         let helpName = "";
 
         settings.addEventListener("click", () =>{
             saveBtn.style.display = "block";
+            delBtn.style.display = "block";
             tplaytime.setAttribute("contentEditable", true);
             tname.setAttribute("contentEditable", true);
             tdifficulty.setAttribute("contentEditable", true);
@@ -301,6 +335,7 @@ function renderSavedGames(){
                 games[editableGame].difficulty = tdifficulty.textContent;
 
                 saveBtn.style.display = "none";
+                delBtn.style.display = "none";
                 errorChng.textContent="";
                 errorChng.style.display ="none";
                 tplaytime.removeAttribute("contentEditable");
@@ -309,10 +344,19 @@ function renderSavedGames(){
                 
                 }
         })
+        delBtn.addEventListener("click", ()=>{
+            for(let game of games){
+                if(tname.textContent == game.name){
+                    let removeableGame = games.findIndex((obj => obj.name == helpName))
+                    if (removeableGame > -1) {
+                        games.splice(removeableGame, 1);
+                        removeGame(games, removeableGame);
+                      }
+                    card.remove();
+                    console.log(games)
+                }
+            }
+        })
     }
 }
-}
-
-function removeSavedGame(){
-
 }

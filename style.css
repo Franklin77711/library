@@ -94,6 +94,17 @@ input[type=number] {
   display: none;
 }
 
+.delete{
+  position: absolute;
+  bottom: 1em;
+  right: 4em;
+  background: transparent;
+  border: none;
+  font-style: normal;
+  color: red;
+  display: none;
+}
+
 #form{
   position: fixed;
   left: 50%;
