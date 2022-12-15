@@ -152,7 +152,6 @@ function addToLibrary(){
                         removeGame(games, removeableGame);
                       }
                     card.remove();
-                    console.log(games)
                 }
             }
         })
@@ -206,7 +205,6 @@ cancelBtn.addEventListener("click", popclose);
 function saveGame(game) {
     const gameData = JSON.stringify(game);
     localStorage.setItem('games', gameData);
-    console.log(gameData)
   }
   
   // Retrieve games from local storage
@@ -226,7 +224,6 @@ function renderSavedGames(){
     if(window.localStorage.length !=0){
     let gameArr = getGame();
     games = gameArr;
-    console.log(gameArr)
     for(let game of gameArr){
         const card = document.createElement("div");
         card.setAttribute("class", "card");
@@ -353,7 +350,6 @@ function renderSavedGames(){
                         removeGame(games, removeableGame);
                       }
                     card.remove();
-                    console.log(games)
                 }
             }
         })
